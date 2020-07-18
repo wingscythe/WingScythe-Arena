@@ -8,7 +8,10 @@ public class PUN2_PlayerSync : MonoBehaviourPun, IPunObservable {
     //List of the GameObjects that should only be active for the local player (ex. Camera, AudioListener etc.)
     public GameObject[] localObjects;
     //Values that will be synced over network
-    Vector3 latestVelocity;
+    Vector3 latestPos;
+    Quaternion latestRot;
+    Vector3 velocity;
+    Vector3 angularVelocity;
 
     public Rigidbody rb;
 
@@ -31,10 +34,16 @@ public class PUN2_PlayerSync : MonoBehaviourPun, IPunObservable {
     public void OnPhotonSerializeView (PhotonStream stream, PhotonMessageInfo info) {
         if (stream.IsWriting) {
             //We own this player: send the others our data
+            stream.SendNext(transform.position);
+            stream.SendNext(transform.rotation);
             stream.SendNext(rb.velocity);
+            stream.SendNext(rb.angularVelocity);
         } else {
             //Network player, receive data
-            latestVelocity = (Vector3)stream.ReceiveNext();
+            latestPos = (Vector3)stream.ReceiveNext();
+            latestRot = (Quaternion)stream.ReceiveNext();
+            velocity = (Vector3)stream.ReceiveNext();
+            angularVelocity = (Vector3)stream.ReceiveNext();
         }
     }
 
@@ -42,7 +51,10 @@ public class PUN2_PlayerSync : MonoBehaviourPun, IPunObservable {
     void Update () {
         if (!photonView.IsMine) {
             //Update remote player (smooth this, this looks good, at the cost of some accuracy)
-            rb.velocity = Vector3.Lerp(transform.position, latestVelocity, Time.deltaTime * 5);
+            transform.position = Vector3.Lerp(transform.position, latestPos, Time.deltaTime * 5);
+            transform.rotation = Quaternion.Lerp(transform.rotation, latestRot, Time.deltaTime * 5);
+            rb.velocity = velocity;
+            rb.angularVelocity = angularVelocity;
         }
     }
 }

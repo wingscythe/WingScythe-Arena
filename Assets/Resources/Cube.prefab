@@ -171,7 +171,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localScripts:
   - {fileID: 4847850876213352685}
-  localObjects: []
+  localObjects:
+  - {fileID: 4847850876870883627}
   rb: {fileID: 0}
 --- !u!1 &4847850876870883627
 GameObject:
