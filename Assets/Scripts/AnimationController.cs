@@ -7,6 +7,8 @@ public class AnimationController : MonoBehaviour
     private bool canJump;
     private Rigidbody rb;
     public Animator anims;
+    private float horizontalInput, verticalInput;
+    public float speed = 4;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +18,10 @@ public class AnimationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        anims.SetFloat("horizontal_float", Input.GetAxis("Horizontal"));
-        anims.SetFloat("vertical_float", Input.GetAxis("Vertical"));
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
+        anims.SetFloat("horizontal_float", horizontalInput);
+        anims.SetFloat("vertical_float", verticalInput);
         if (Input.GetKey(KeyCode.LeftShift)) {
             anims.SetBool("Shift", true);
         }
@@ -46,6 +50,8 @@ public class AnimationController : MonoBehaviour
             canJump = true;
             anims.SetBool("IsJump", true);
         }
+        Vector3 velocity = new Vector3(horizontalInput * speed, 0, verticalInput * speed);
+        rb.velocity = velocity;
     }
     void FixedUpdate() {
         if (canJump) {
