@@ -22,7 +22,7 @@ public class AnimationController : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
         anims.SetFloat("horizontal_float", horizontalInput);
         anims.SetFloat("vertical_float", verticalInput);
-        if (Input.GetKey(KeyCode.LeftShift)) {
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) {
             anims.SetBool("Shift", true);
         }
         else {
