@@ -19,5 +19,29 @@ public class AnimationController : MonoBehaviour
     {
         anims.SetFloat("horizontal_float", Input.GetAxis("Horizontal"));
         anims.SetFloat("vertical_float", Input.GetAxis("Vertical"));
+        if (Input.GetKey(KeyCode.LeftShift)) {
+            anims.SetBool("Shift", true);
+        }
+        else {
+            anims.SetBool("Shift", false);
+        }
+        if (Input.GetKey(KeyCode.Mouse0)) {
+            anims.SetBool("Attack1", true);
+        }
+        else {
+            anims.SetBool("Attack1", false);
+        }
+        if (Input.GetKey(KeyCode.Mouse1)) {
+            anims.SetBool("Attack2", true);
+        }
+        else { 
+            anims.SetBool("Attack2", false);
+        }
+        if (Input.GetKey(KeyCode.Q)) {
+            anims.SetBool("Attack3", true);
+        }
+        else {
+            anims.SetBool("Attack3", false);
+        }
     }
 }
