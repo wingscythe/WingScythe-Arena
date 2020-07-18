@@ -4,34 +4,54 @@ using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {
-    float horizontalInput;
-    float verticalInput;
-
+    private bool canJump;
+    private Rigidbody rb;
     public Animator anims;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
-        
-        if (Input.GetKeyDown(KeyCode.Q)) {
+        anims.SetFloat("horizontal_float", Input.GetAxis("Horizontal"));
+        anims.SetFloat("vertical_float", Input.GetAxis("Vertical"));
+        if (Input.GetKey(KeyCode.LeftShift)) {
+            anims.SetBool("Shift", true);
+        }
+        else {
+            anims.SetBool("Shift", false);
+        }
+        if (Input.GetKey(KeyCode.Mouse0)) {
             anims.SetBool("Attack1", true);
         }
-        if (Input.GetKeyDown(KeyCode.E)) {
-            Debug.Log("Attack2");
+        else {
+            anims.SetBool("Attack1", false);
+        }
+        if (Input.GetKey(KeyCode.Mouse1)) {
             anims.SetBool("Attack2", true);
         }
-        if (Input.GetKeyDown(KeyCode.R)) {
-            Debug.Log("Attack3");
+        else { 
+            anims.SetBool("Attack2", false);
+        }
+        if (Input.GetKey(KeyCode.Q)) {
             anims.SetBool("Attack3", true);
         }
-        anims.SetFloat("Horizontal_Float", horizontalInput);
-        anims.SetFloat("Vertical_Float", verticalInput);
+        else {
+            anims.SetBool("Attack3", false);
+        }
+        if (Input.GetKey(KeyCode.Space)) {
+            canJump = true;
+            anims.SetBool("IsJump", true);
+        }
+    }
+    void FixedUpdate() {
+        if (canJump) {
+            canJump = false;
+            rb.AddForce(Vector3.up * 20);
+            anims.SetBool("IsJump", false);
+        }
     }
 }
