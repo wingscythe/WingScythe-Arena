@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {
-    float horizontalInput;
-    float verticalInput;
-
+    private bool canJump;
+    private Rigidbody rb;
     public Animator anims;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -42,6 +41,17 @@ public class AnimationController : MonoBehaviour
         }
         else {
             anims.SetBool("Attack3", false);
+        }
+        if (Input.GetKey(KeyCode.Space)) {
+            canJump = true;
+            anims.SetBool("IsJump", true);
+        }
+    }
+    void FixedUpdate() {
+        if (canJump) {
+            canJump = false;
+            rb.AddForce(Vector3.up * 20);
+            anims.SetBool("IsJump", false);
         }
     }
 }
