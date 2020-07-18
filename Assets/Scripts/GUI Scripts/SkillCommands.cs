@@ -15,10 +15,6 @@ public class SkillCommands : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-<<<<<<< HEAD
-        // if (Input.GetKeyDown())
-=======
         
->>>>>>> 618bb187c0428e2ba8a187cd3b0d43abdb0c795f
     }
 }
