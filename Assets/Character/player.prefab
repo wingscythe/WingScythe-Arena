@@ -6420,15 +6420,15 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
-  attackStartUp: 3
-  attackActive: 0.5
-  attackRecovery: 0.2
+  attackStartUp: 0.2
+  attackActive: 0.1
+  attackRecovery: 0.3
   moveSpeed: 5
   dashStartUp: 0.1
-  dashSpeed: 50
-  dashTime: 0.05
-  dashRecoveryTime: 0.5
-  checkRadius: 0.5
+  dashSpeed: 19
+  dashTime: 0.23
+  dashRecoveryTime: 0.15
+  checkRadius: 0.01
   state: 0
   args: 0
   speed: 5

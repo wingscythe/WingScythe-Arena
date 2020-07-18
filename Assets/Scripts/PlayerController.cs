@@ -13,9 +13,9 @@ public class PlayerController : MonoBehaviour
 
     //TODO: Create Attack Automation
     [Header("Attack")]
-    public float attackStartUp = 0.1f;
-    public float attackActive = 0.5f;
-    public float attackRecovery = 0.2f;
+    public float attackStartUp = 0.2f;
+    public float attackActive = 0.1f;
+    public float attackRecovery = 0.3f;
 
     [Header("Movement")]
     public float moveSpeed = 5f;
@@ -24,9 +24,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("Dashing")]
     public float dashStartUp = 0.1f;
-    public float dashSpeed = 50f;
-    public float dashTime = 0.1f;
-    public float dashRecoveryTime = 0.2f;
+    public float dashSpeed = 19f;
+    public float dashTime = 0.23f;
+    public float dashRecoveryTime = 0.15f;
 
     [Header("Jumping")]
     public float checkRadius = 0.01f;
@@ -70,12 +70,12 @@ public class PlayerController : MonoBehaviour
                 Attack();
                 break;
             case 2:
-                if(args == 1) {
+                if(args == 0) {
                     //First Dash Frame
                     cooldown = dashTime;
                     speed = dashSpeed;
                     anims.SetBool("Shift", true);
-                    args = 0;
+                    args = 1;
                 }
                 Dash();
                 break;
@@ -101,8 +101,9 @@ public class PlayerController : MonoBehaviour
         grounded = Physics.OverlapSphere(PeetL.position, checkRadius, whatIsGround).Length > 0 && Physics.OverlapSphere(PeetR.position, checkRadius, whatIsGround).Length > 0;
 
         if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) {
-            state = 2;
-            args = 1;
+            state = 4;
+            cooldown = dashStartUp;
+            args = 2;
         } else if(Input.GetAxisRaw("Fire1") != 0){
             state = 4;
             cooldown = attackStartUp;
