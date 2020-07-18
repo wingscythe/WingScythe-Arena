@@ -50,7 +50,7 @@ public class AnimationController : MonoBehaviour
             canJump = true;
             anims.SetBool("IsJump", true);
         }
-        Vector3 velocity = new Vector3(horizontalInput * speed, 0, verticalInput * speed);
+        Vector3 velocity = (transform.right * horizontalInput + transform.forward * verticalInput) * speed;
         rb.velocity = velocity;
     }
     void FixedUpdate() {
