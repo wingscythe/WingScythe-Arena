@@ -6,25 +6,23 @@ using UnityEngine.UI;
 public class HealthDisplay : MonoBehaviour
 {
     public Slider hp_slider;
-    public float current_health;
     public Text health_display;
     public Animator anims;
 
     // Start is called before the first frame update
     void Start()
     {
-    
+        anims.SetInteger("health", (int)hp_slider.value);
     } 
 
     // Update is called once per frame
     void Update()
     {
-        current_health = hp_slider.value;
-        health_display.text = "HP: " + current_health.ToString() + " / " + hp_slider.maxValue;
+        health_display.text = "HP: " + hp_slider.value.ToString() + " / " + hp_slider.maxValue;
         if (Input.GetKeyDown(KeyCode.Space))
         {
             hp_slider.value--;
         }
-        anims.SetInteger("health", (int)current_health);
+        anims.SetInteger("health", (int)hp_slider.value);
     }
 }

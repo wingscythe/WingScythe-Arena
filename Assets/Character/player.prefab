@@ -1311,8 +1311,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 6950808491401909353}
   - {fileID: 6950808490861401594}
+  - {fileID: 6950808491401909353}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5675,7 +5675,7 @@ Transform:
   m_Children:
   - {fileID: 423705497278754127}
   m_Father: {fileID: 6950808489835928565}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &6950808490861401599
 Camera:
@@ -8425,7 +8425,7 @@ Transform:
   - {fileID: 6950808489986092877}
   - {fileID: 6950808490104357633}
   m_Father: {fileID: 6950808489835928565}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &6950808491401909352
 BoxCollider:
