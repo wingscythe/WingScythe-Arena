@@ -8,6 +8,7 @@ public class Back_Slash_LR_Trigger : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "sword") {
             anims.SetBool("hit_back_slash_LR", true);
+            anims.SetInteger("health", anims.GetInteger("health")-2);
         }
     }
 }

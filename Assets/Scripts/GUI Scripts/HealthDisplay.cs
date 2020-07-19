@@ -19,10 +19,6 @@ public class HealthDisplay : MonoBehaviour
     void Update()
     {
         health_display.text = "HP: " + hp_slider.value.ToString() + " / " + hp_slider.maxValue;
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            hp_slider.value--;
-        }
-        anims.SetInteger("health", (int)hp_slider.value);
+        hp_slider.value = (float)anims.GetInteger("health");
     }
 }
