@@ -9,12 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Movement.unity
     guid: dfd5b9456a7b650408bde50ca66473f3
   - enabled: 0
-    path: Assets/Scenes/Menu.unity
-    guid: e5e9fff9226c7de46a2cfdc7fb3d737b
-  - enabled: 1
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: Assets/Scenes/Networking.unity
     guid: 6b8e8ca6d60126c46a7993d4aa76acb8
   - enabled: 1
     path: Assets/Scenes/GameLobby.unity
     guid: e68a9f7354bb726439cbc2c7da500ec5
+  - enabled: 1
+    path: Assets/Scenes/Arena.unity
+    guid: 0edabd8d1cbc9a348addbca893010588
   m_configObjects: {}

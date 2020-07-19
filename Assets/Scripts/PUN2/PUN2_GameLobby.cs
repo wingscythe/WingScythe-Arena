@@ -155,7 +155,7 @@ public class PUN2_GameLobby : MonoBehaviourPunCallbacks {
         //Set our player name
         PhotonNetwork.NickName = playerName;
         //Load the Scene called GameLevel (Make sure it's added to build settings)
-        PhotonNetwork.LoadLevel("Networking");
+        PhotonNetwork.LoadLevel("Arena");
     }
 
     public override void OnJoinedRoom () {
