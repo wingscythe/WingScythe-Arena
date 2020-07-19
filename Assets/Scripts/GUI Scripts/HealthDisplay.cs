@@ -8,6 +8,7 @@ public class HealthDisplay : MonoBehaviour
     public Slider hp_slider;
     public float current_health;
     public Text health_display;
+    public Animator anims;
 
     // Start is called before the first frame update
     void Start()
@@ -24,5 +25,6 @@ public class HealthDisplay : MonoBehaviour
         {
             hp_slider.value--;
         }
+        anims.SetInteger("health", (int)current_health);
     }
 }

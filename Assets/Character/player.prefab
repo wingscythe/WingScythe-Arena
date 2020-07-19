@@ -9328,6 +9328,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7320450119987413026, guid: 98fa20688f3c50e4bab5ad60cd5dc526,
+        type: 3}
+      propertyPath: anims
+      value: 
+      objectReference: {fileID: 6950808491401909355}
     - target: {fileID: 7320450120432966798, guid: 98fa20688f3c50e4bab5ad60cd5dc526,
         type: 3}
       propertyPath: m_LocalPosition.x
